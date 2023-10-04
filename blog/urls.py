@@ -1,4 +1,6 @@
 from django.urls import path
+from django.urls import path
+from accounts import views
 
 from blog.views import (
     index, ola, post_show, PostDetailView,
@@ -19,5 +21,13 @@ urlpatterns = [
     path('about-us',
         SobreTemplateView.as_view(),
         name="about_page"
+),
+]
+
+
+urlpatterns = [
+    path('accounts/signup', # caminho que vai carregar a view com o formulário
+    views.AccountCreateView.as_view(),
+    name="signup"
 ),
 ]
