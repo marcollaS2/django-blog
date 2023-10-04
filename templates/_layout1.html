@@ -22,7 +22,7 @@ css %}
 </main>
 {% endblock %} {% block main %}
 <div class="container">
-  {% block content %}
+  {% block content %} {% include 'messages.html' %}
   <p>Conteúdo padrão...</p>
   {% endblock content %}
 </div>

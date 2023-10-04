@@ -1,8 +1,10 @@
+from django.contrib import messages
 from django.views.generic import DetailView, ListView, TemplateView
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 from blog.models import Post
 from blog.forms import PostModelForm
+from django.contrib import messages
 
 
 def post_show(request, post_id):
@@ -52,5 +54,11 @@ class PostCreateView(CreateView):
 
 
 # fields = ('body_text', ) # linha comentada pois o Form controla agora
-success_url = reverse_lazy('posts_list')
+success_url = reverse_lazy('posts_all')
 form_class = PostModelForm
+success_message = 'Postagem salva com sucesso.'
+
+
+def form_valid(self, request, *args, **kwargs):
+    messages.success(self.request, self.success_message)
+    return super(PostCreateView, self).form_valid(request, *args, **kwargs)
