@@ -18,3 +18,5 @@ categoria = models.CharField(
     default=None,
     null=True
 )
+
+# oiiiiiii
